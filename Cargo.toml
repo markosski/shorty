@@ -1,7 +1,9 @@
 [package]
 name = "shorty"
+description = "Shorty allows for quick lookup of keyboard shortcuts"
 version = "0.1.0"
 edition = "2021"
+authors = ["Markosski <marcin.kossakowski@gmail.com>"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -17,3 +19,15 @@ env_logger = { version = "0.10", default-features = false, features = [
     "auto-color",
     "humantime",
 ] }
+
+[package.metadata.bundle]
+name = "Shorty"
+identifier = "com.glacierlabs.shorty"
+icon = ["icons/icon*.png"]
+version = "0.1.0"
+copyright = "Copyright (c) Glacier Labs 2023. All rights reserved."
+category = "productivity"
+short_description = "Shorty allows for quick lookup of keyboard shortcuts."
+deb_depends = ["libgl1-mesa-glx", "libsdl2-2.0-0 (>= 2.0.5)"]
+osx_frameworks = ["SDL2"]
+osx_url_schemes = ["com.glacierlabs.shorty"]

@@ -1,0 +1,154 @@
+---
+- description: "Global"
+  items:
+  - shortcut:
+      default: :h[elp] keyword
+    description: open help for keyword
+  - shortcut:
+      default: :sav[eas] file
+    description: save file as
+  - shortcut:
+      default: :clo[se]
+    description: close current pane
+  - shortcut:
+      default: :ter[minal]
+    description: open a terminal window
+- description: "Cursor movement"
+  items:
+  - shortcut:
+      default: h
+    description: move cursor left
+  - shortcut:
+      default: j
+    description: move cursor down
+  - shortcut:
+      default: k
+    description: move cursor up
+  - shortcut:
+      default: l
+    description: move cursor right
+  - shortcut:
+      default: gj
+    description: move cursor down (multi-line text)
+  - shortcut:
+      default: gk
+    description: move cursor up (multi-line text)
+  - shortcut:
+      default: H
+    description: move to top of screen
+  - shortcut:
+      default: M
+    description: move to middle of screen
+  - shortcut:
+      default: L
+    description: move to bottom of screen
+  - shortcut:
+      default: w
+    description: jump forwards to the start of a word
+  - shortcut:
+      default: W
+    description: jump forwards to the start of a word (words can contain punctuation)
+  - shortcut:
+      default: e
+    description: jump forwards to the end of a word
+  - shortcut:
+      default: E
+    description: jump forwards to the end of a word (words can contain punctuation)
+  - shortcut:
+      default: b
+    description: jump backwards to the start of a word
+  - shortcut:
+      default: B
+    description: jump backwards to the start of a word (words can contain punctuation)
+  - shortcut:
+      default: ge
+    description: jump backwards to the end of a word
+  - shortcut:
+      default: gE
+    description: jump backwards to the end of a word (words can contain punctuation)
+  - shortcut:
+      default: "%"
+    description: "move cursor to matching character (default supported pairs: '()', '{}', '[]' - use :h matchpairs in vim for more info)"
+  - shortcut:
+      default: "0"
+    description: jump to the start of the line
+  - shortcut:
+      default: "^"
+    description: jump to the first non-blank character of the line
+  - shortcut:
+      default: "$"
+    description: jump to the end of the line
+  - shortcut:
+      default: g_
+    description: jump to the last non-blank character of the line
+  - shortcut:
+      default: gg
+    description: go to the first line of the document
+  - shortcut:
+      default: G
+    description: go to the last line of the document
+  - shortcut:
+      default: 5gg or 5G
+    description: go to line 5
+  - shortcut:
+      default: gd
+    description: move to local declaration
+  - shortcut:
+      default: gD
+    description: move to global declaration
+  - shortcut:
+      default: fx
+    description: jump to next occurance of character x
+  - shortcut:
+      default: tx
+    description: jump to before next occurance of character x
+  - shortcut:
+      default: Fx
+    description: jump to the previous occurance of character x
+  - shortcut:
+      default: Tx
+    description: jump to after previous occurance of character x
+  - shortcut:
+      default: ";"
+    description: repeat previous f, t, F or T movement  
+  - shortcut:
+      default: ","
+    description: repeat previous f, t, F or T movement, backwards
+  - shortcut:
+      default: "}"
+    description: jump to next paragraph (or function/block, when editing code)
+  - shortcut:
+      default: "{"
+    description: jump to previous paragraph (or function/block, when editing code)
+  - shortcut:
+      default: zz
+    description: center cursor on screen
+  - shortcut:
+      default: zt
+    description: position cursor on top of the screen
+  - shortcut:
+      default: zb
+    description: position cursor on botton of the screen
+  - shortcut:
+      default: ctrl,e
+    description: move screen down one line (without moving cursor)
+  - shortcut:
+      default: ctrl,y
+    description: move screen up one line (without moving cursor)
+  - shortcut:
+      default: ctrl,b
+    description: move screen up one page (cursor to last line)
+  - shortcut:
+      default: ctrl,f
+    description: move screen down one page (cursor to first line)
+  - shortcut:
+      default: ctrl,d
+    description: move cursor and screen down 1/2 page
+  - shortcut:
+      default: ctrl,u
+    description: move cursor and screen up 1/2 page
+- description: "Insert mode"
+  items:
+  - shortcut:
+      default: i
+    description: insert before the cursor

@@ -3,6 +3,7 @@ use egui_extras::{TableBuilder, Column};
 use eframe::egui;
 use fuzzy_matcher::FuzzyMatcher;
 use std::{fs, f32::INFINITY};
+use std::io::Error;
 use yaml_rust::{YamlLoader, YamlEmitter, Yaml};
 use fuzzy_matcher::skim::SkimMatcherV2;
 
@@ -72,26 +73,6 @@ impl Content {
             all_data.push(new_section);
         }
         
-        // let data = vec![
-        //     Data {
-        //         section_descr: "Editing".to_string(),
-        //         items: vec![
-        //             Item{shortcut:"⌘".to_string(), description:"replace this character".to_string()},
-        //             Item{shortcut:"⌘".to_string(), description:"replace word".to_string()},
-        //             Item{shortcut:"⌘".to_string(), description:"yank line".to_string()},
-        //             Item{shortcut:"⌘".to_string(), description:"duplicate line".to_string()},
-        //             ]
-        //     },
-        //     Data {
-        //         section_descr: "Movement".to_string(),
-        //         items: vec![
-        //             Item{shortcut:"⌘".to_string(), description:"replace this character".to_string()},
-        //             Item{shortcut:"⌘".to_string(), description:"replace word".to_string()},
-        //             Item{shortcut:"⌘".to_string(), description:"yank line".to_string()},
-        //             ]
-        //     },
-        // ];
-
         self.content_name = selected_name.clone();
         self.content = all_data;
         self.filtered = self.content.clone();
@@ -112,8 +93,6 @@ impl Content {
         });
         ui.add_space(20.0);
 
-        // println!("{:?}", ui.available_width());
-        // println!("{:?}", ui.set_min_width(400.0));
         egui::ScrollArea::vertical()
         .show(ui, |ui| {
             // Add a lot of widgets here.

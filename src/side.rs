@@ -8,24 +8,19 @@ pub struct SheetList {
 }
 
 impl SheetList {
-    pub fn init(content: &mut Content, config: &Config) -> SheetList {
-        if let Some(name) = config.cached_names.first() {
-            content.load(name, config);
-            SheetList {
-                selected_name: name.clone()
-            }
-        } else {
-            SheetList {
-                selected_name: "".to_string()
-            }
+    // attempt to load content on start
+    pub fn init() -> SheetList {
+        SheetList {
+            selected_name: "".to_string()
         }
     }
 
     pub fn show(&mut self, ui: &mut Ui, config: &Config, content: &mut Content) {
         ui.label("Available cheat sheets");
-        // ui.add(egui::Separator::default());
+        let mut sorted_cached_names = config.cached_names.clone();
+        sorted_cached_names.sort();
 
-        for name in &config.cached_names {
+        for name in &sorted_cached_names {
             if ui.selectable_label(self.selected_name.eq(name), name).clicked() {
                 content.load(&name, config);
                 content.search_term = "".to_string();
