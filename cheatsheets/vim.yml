@@ -13,6 +13,7 @@
   - shortcut:
       default: :ter[minal]
     description: open a terminal window
+
 - description: "Cursor movement"
   items:
   - shortcut:
@@ -147,8 +148,114 @@
   - shortcut:
       default: ctrl,u
     description: move cursor and screen up 1/2 page
+
 - description: "Insert mode"
   items:
   - shortcut:
       default: i
     description: insert before the cursor
+  - shortcut:
+      default: I
+    description: insert at the beginning of the line
+  - shortcut:
+      default: a
+    description: insert (append) after the cursor
+  - shortcut:
+      default: A
+    description: insert (append) at the end of the line
+  - shortcut:
+      default: o
+    description: append (open) a new line below the current line
+  - shortcut:
+      default: O
+    description: append (open) a new line above the current line
+  - shortcut:
+      default: ea
+    description: insert (append) at the end of the word
+  - shortcut:
+      default: ctrl + h
+    description: delete the character before the cursor during insert mode
+  - shortcut:
+      default: ctrl + w
+    description: delete word before the cursor during insert mode
+  - shortcut:
+      default: ctrl + j
+    description: add a line break at the cursor position during insert mode
+  - shortcut:
+      default: ctrl + t
+    description: indent (move right) line one shiftwidth during insert mode
+  - shortcut:
+      default: ctrl + d
+    description: de-indent (move left) line one shiftwidth during insert mode
+  - shortcut:
+      default: ctrl + n
+    description: insert (auto-complete) next match before the cursor during insert mode
+  - shortcut:
+      default: ctrl + p
+    description: insert (auto-complete) previous match before the cursor during insert mode
+  - shortcut:
+      default: ctrl + rx
+    description: insert the contents of register x
+  - shortcut:
+      default: ctrl + ox
+    description: Temporarily enter normal mode to issue one normal-mode command x.
+  - shortcut:
+      default: esc or ctrl + c
+    description: exit insert mode.
+
+- description: "Insert mode"
+  items:
+  - shortcut:
+      default: r
+    description: replace a single character.
+  - shortcut:
+      default: R
+    description: replace more than one character, until ESC is pressed.
+  - shortcut:
+      default: J
+    description: join line below to the current one with one space in between
+  - shortcut:
+      default: gJ
+    description: join line below to the current one without space in between
+  - shortcut:
+      default: gwip
+    description: reflow paragraph
+  - shortcut:
+      default: g~
+    description: switch case up to motion
+  - shortcut:
+      default: gu
+    description: change to lowercase up to motion
+  - shortcut:
+      default: gU
+    description: change to uppercase up to motion
+  - shortcut:
+      default: cc
+    description: change (replace) entire linen
+  - shortcut:
+      default: c$ or C
+    description: change (replace) to the end of the linen
+  - shortcut:
+      default: ciw
+    description: change (replace) entire word
+  - shortcut:
+      default: cw or ce
+    description: change (replace) to the end of the word
+  - shortcut:
+      default: s
+    description: delete character and substitute text
+  - shortcut:
+      default: S
+    description: delete line and substitute text (same as cc)
+  - shortcut:
+      default: xp
+    description: transpose two letters (delete and paste)
+  - shortcut:
+      default: u
+    description: undo
+  - shortcut:
+      default: U
+    description: restore (undo) last changed line
+  - shortcut:
+      default: ctrl + r
+    description: redo

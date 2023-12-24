@@ -3,6 +3,7 @@ use std::fs::{self, DirEntry};
 use linked_hash_map::LinkedHashMap;
 use eframe::egui::Ui;
 use std::str::FromStr;
+use std::io::Error;
 
 use crate::config::*;
 use crate::content::Content;
@@ -16,6 +17,10 @@ impl Settings {
         Settings {
            show_save: false,
         }
+    }
+
+    fn fetch() -> Result<(), Error> {
+        Ok(())
     }
 
     fn save(&mut self, config: &Config) {

@@ -106,11 +106,12 @@ impl Content {
                     .striped(true)
                     .vscroll(false)
                     .column(Column::auto_with_initial_suggestion(300.0)
+                        .at_most(300.0)
                         .at_least(100.0))
                     .column(Column::remainder())
                     .body(|mut body| {
                         for item in &datum.items {
-                            body.row(30.0, |mut row| {
+                            body.row(40.0, |mut row| {
                                 row.col(|ui| {
                                     ui.style_mut().text_styles.insert(
                                         egui::TextStyle::Body,
@@ -118,6 +119,7 @@ impl Content {
                                     );
                                     ui.add(egui::Label::new(&item.shortcut).truncate(true));
                                 });
+                                // TODO is it possible to have auto height on row, expanding based on content size
                                 row.col(|ui| {
                                     ui.add(egui::Label::new(&item.description).wrap(true));
                                 });
