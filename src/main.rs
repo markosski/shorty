@@ -1,14 +1,11 @@
-mod settings;
 mod side;
 mod config;
 mod content;
 
 use eframe::egui::{self};
-use settings::Settings;
 use side::SheetList;
 use content::Content;
 use config::*;
-use std::env;
 
 fn main() -> Result<(), eframe::Error> {
     env_logger::init(); // Log to stderr (if you run with `RUST_LOG=debug`).
@@ -39,7 +36,7 @@ fn main() -> Result<(), eframe::Error> {
     let mut side = SheetList::init();
     if !config.cached_names.is_empty() {
         side.selected_name = config.cached_names[0].clone();
-        content.load(&side.selected_name, &config);
+        content.load(&side.selected_name);
     }
 
     eframe::run_simple_native("Shorty - your handy shortcut browser", options, move |ctx, _frame| {

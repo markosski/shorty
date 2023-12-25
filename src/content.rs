@@ -37,7 +37,7 @@ impl Content {
         }
     }
 
-    pub fn load(&mut self, selected_name: &String, config: &Config) {
+    pub fn load(&mut self, selected_name: &String) {
         let system = env::consts::OS.to_owned();
         let system_index = system.as_str();
         let home = std::env::var("HOME").unwrap();

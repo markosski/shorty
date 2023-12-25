@@ -22,7 +22,7 @@ impl SheetList {
 
         for name in &sorted_cached_names {
             if ui.selectable_label(self.selected_name.eq(name), name).clicked() {
-                content.load(&name, config);
+                content.load(&name);
                 content.search_term = "".to_string();
                 self.selected_name = name.clone();
             }
