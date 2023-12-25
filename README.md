@@ -34,3 +34,7 @@ Install as application on Mac
 `mkdir -p ~/.shorty/cache`
 
 `cp cheatsheets/* ~/.shorty/cache`
+
+<img width="912" alt="Screen Shot 2023-12-25 at 12 26 26 PM" src="https://github.com/markosski/shorty/assets/916909/5b25a073-1e6f-4314-8f0f-0dbec593a3de">
+
+

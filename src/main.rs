@@ -17,17 +17,10 @@ fn main() -> Result<(), eframe::Error> {
 
     // Load configuration file
     let config = match Config::init() {
-        Ok(_) => 
-            match Config::read_config() {
-                Ok(config) => config,
-                Err(err) => {
-                    println!("{}", err.to_string());
-                    panic!("Problem reading configuration file.");
-                }
-            },
+        Ok(c) => c,
         Err(err) => {
             println!("{:?}", err.to_string());
-            panic!("Problem initializing configuration file.")
+            panic!("Problem reading configuration files.")
         }
     };
 

@@ -1,9 +1,9 @@
-use eframe::egui::{Ui, Grid, TextBuffer};
+use eframe::egui::Ui;
 use egui_extras::{TableBuilder, Column};
 use eframe::egui;
 use fuzzy_matcher::FuzzyMatcher;
 use std::{env, fs};
-use yaml_rust::{YamlLoader, YamlEmitter, Yaml};
+use yaml_rust::YamlLoader;
 use fuzzy_matcher::skim::SkimMatcherV2;
 
 use crate::config::*;

@@ -1,4 +1,4 @@
-use eframe::egui::{Ui, CursorIcon};
+use eframe::egui::Ui;
 
 use crate::config::Config;
 use crate::content::Content;

@@ -10,7 +10,6 @@ authors = ["Markosski <marcin.kossakowski@gmail.com>"]
 [dependencies]
 eframe = "0.24.1"
 egui_extras ="0.24.2"
-confy = "0.5.1"
 yaml-rust = "0.4"
 shellexpand = "3.1.0"
 linked-hash-map = "0.5.6"

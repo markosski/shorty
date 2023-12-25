@@ -1,10 +1,7 @@
-use yaml_rust::{YamlLoader, YamlEmitter, Yaml};
-use std::fs::{self, DirEntry};
-use linked_hash_map::LinkedHashMap;
+use std::fs;
 use std::io::Error;
 
 pub const CONFIG_DIR: &str = ".shorty";
-pub const CONFIG_FILE: &str = "config.yml";
 pub const CONFIG_CACHE: &str = "cache";
 
 pub struct Config {
@@ -12,14 +9,16 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn init() -> Result<(), Error> {
+    pub fn init() -> Result<Config, Error> {
         let home = std::env::var("HOME").unwrap();
         let dir_path = format!("{}/{}", &home, CONFIG_DIR);
         let dir_path_cache = format!("{}/{}/cache", &home, CONFIG_DIR);
 
         fs::DirBuilder::new().recursive(true).create(&dir_path)?;
         fs::DirBuilder::new().recursive(true).create(&dir_path_cache)?;
-        Ok(())
+
+        let cache = Config::load_names(&dir_path_cache)?;
+        Ok(Config {cached_names: cache})
     }
 
     pub fn load_names(path: &String) -> Result<Vec<String>, Error> {
@@ -43,41 +42,5 @@ impl Config {
             }
             Err(err) => Err(err)
         }
-    }
-
-    pub fn read_config() -> Result<Config, Error> {
-        let home = std::env::var("HOME").unwrap();
-        let full_path = format!("{}/{}/{}", &home, CONFIG_DIR, CONFIG_FILE);
-        println!("reading config: {}", full_path);
-
-        let contents = fs::read_to_string(full_path)
-        .expect("Should have been able to read the file");
-
-        let docs = YamlLoader::load_from_str(&contents).unwrap();
-        let doc = &docs[0];
-        println!("doc - {:?}", &doc);
-
-        let cached_names = Config::load_names(&format!("{}/{}/{}/", home, CONFIG_DIR, CONFIG_CACHE))?;
-        println!("{:?}", &cached_names);
-
-        Ok(Config {
-            cached_names: cached_names,
-        })
-    }
-
-    pub fn write_config(path: &String, config: &Config) -> () {
-        let mut out_str = String::new();
-        let mut emitter = YamlEmitter::new(&mut out_str);
-
-        let mut map = LinkedHashMap::new();
-        let doc = &Yaml::Hash(map);
-
-        emitter.dump(&doc).unwrap();
-
-        let home = std::env::var("HOME").unwrap();
-        let full_path = format!("{}/{}", home, path);
-
-        println!("{}", out_str);
-        fs::write(full_path, out_str).unwrap();
     }
 }
