@@ -2,8 +2,7 @@ use eframe::egui::{Ui, Grid, TextBuffer};
 use egui_extras::{TableBuilder, Column};
 use eframe::egui;
 use fuzzy_matcher::FuzzyMatcher;
-use std::{fs, f32::INFINITY};
-use std::io::Error;
+use std::{env, fs};
 use yaml_rust::{YamlLoader, YamlEmitter, Yaml};
 use fuzzy_matcher::skim::SkimMatcherV2;
 
@@ -39,7 +38,7 @@ impl Content {
     }
 
     pub fn load(&mut self, selected_name: &String, config: &Config) {
-        let system = format!("{:?}", &config.system).to_lowercase();
+        let system = env::consts::OS.to_owned();
         let system_index = system.as_str();
         let home = std::env::var("HOME").unwrap();
         let full_path = format!("{}/{}/{}/{}.yml", home, CONFIG_DIR, CONFIG_CACHE, selected_name);
@@ -91,6 +90,9 @@ impl Content {
                 self.filtered = self.filter(&self.content);
             }
         });
+        if self.content.is_empty() {
+            ui.label(format!("No cheat sheets available. Make sure you have them placed in ~/{}/{}", &CONFIG_DIR, &CONFIG_CACHE));
+        }
         ui.add_space(20.0);
 
         egui::ScrollArea::vertical()
@@ -106,11 +108,12 @@ impl Content {
                     .striped(true)
                     .vscroll(false)
                     .column(Column::auto_with_initial_suggestion(300.0)
+                        .at_most(300.0)
                         .at_least(100.0))
                     .column(Column::remainder())
                     .body(|mut body| {
                         for item in &datum.items {
-                            body.row(30.0, |mut row| {
+                            body.row(40.0, |mut row| {
                                 row.col(|ui| {
                                     ui.style_mut().text_styles.insert(
                                         egui::TextStyle::Body,
@@ -118,6 +121,7 @@ impl Content {
                                     );
                                     ui.add(egui::Label::new(&item.shortcut).truncate(true));
                                 });
+                                // TODO is it possible to have auto height on row, expanding based on content size
                                 row.col(|ui| {
                                     ui.add(egui::Label::new(&item.description).wrap(true));
                                 });
