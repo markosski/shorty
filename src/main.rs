@@ -8,8 +8,8 @@ use settings::Settings;
 use side::SheetList;
 use content::Content;
 use config::*;
+use std::env;
 
-// TODO: implement pulling shortcut definitions from github (using selected names)
 fn main() -> Result<(), eframe::Error> {
     env_logger::init(); // Log to stderr (if you run with `RUST_LOG=debug`).
 
@@ -19,9 +19,9 @@ fn main() -> Result<(), eframe::Error> {
     };
 
     // Load configuration file
-    let mut config = match Config::init() {
+    let config = match Config::init() {
         Ok(_) => 
-            match Config::read_config(&format!("{}/{}", CONFIG_DIR, CONFIG_FILE)) {
+            match Config::read_config() {
                 Ok(config) => config,
                 Err(err) => {
                     println!("{}", err.to_string());
@@ -35,7 +35,6 @@ fn main() -> Result<(), eframe::Error> {
     };
 
     // Prepare all components and initialize state
-    let mut settings = Settings::init();
     let mut content = Content::init();
     let mut side = SheetList::init();
     if !config.cached_names.is_empty() {
@@ -44,10 +43,6 @@ fn main() -> Result<(), eframe::Error> {
     }
 
     eframe::run_simple_native("Shorty - your handy shortcut browser", options, move |ctx, _frame| {
-        egui::TopBottomPanel::top("top").show(ctx, |ui| {
-            settings.show(ui, &mut content, &mut config);
-        });
-
         egui::SidePanel::left("left").show(ctx, |ui| {
             side.show(ui, &config, &mut content);
         });

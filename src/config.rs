@@ -44,8 +44,14 @@ pub struct Config {
 impl Config {
     pub fn init() -> Result<(), Error> {
         let home = std::env::var("HOME").unwrap();
-        let path = format!("{}/{}/{}", &home, CONFIG_DIR, CONFIG_FILE);
+        let dir_path = format!("{}/{}", &home, CONFIG_DIR);
+        let dir_path_cache = format!("{}/{}/cache", &home, CONFIG_DIR);
+        let path = format!("{}/{}", &dir_path, CONFIG_FILE);
         println!("initializing config: {}", &path);
+
+        fs::DirBuilder::new().recursive(true).create(&dir_path)?;
+        fs::DirBuilder::new().recursive(true).create(&dir_path_cache)?;
+
         if let Err(err) = fs::File::open(&path) {
             if let Ok(mut file) = fs::File::create(&path) {
                 if let Err(err) = file.write(CONFIG_DEFAULT_CONTENT.as_bytes()) {
@@ -84,10 +90,10 @@ impl Config {
         }
     }
 
-    pub fn read_config(path: &String) -> Result<Config, Error> {
+    pub fn read_config() -> Result<Config, Error> {
         let home = std::env::var("HOME").unwrap();
-        let full_path = format!("{}/{}", home, path);
-        println!("{}", full_path);
+        let full_path = format!("{}/{}/{}", &home, CONFIG_DIR, CONFIG_FILE);
+        println!("reading config: {}", full_path);
 
         let contents = fs::read_to_string(full_path)
         .expect("Should have been able to read the file");
@@ -97,7 +103,6 @@ impl Config {
         println!("doc - {:?}", &doc);
 
         let cached_names = Config::load_names(&format!("{}/{}/{}/", home, CONFIG_DIR, CONFIG_CACHE))?;
-        let first_cached_name = cached_names[0].clone();
         println!("{:?}", &cached_names);
 
         Ok(Config {

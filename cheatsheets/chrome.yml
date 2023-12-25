@@ -2,97 +2,78 @@
 - description: "Tab & windows"
   items:
   - shortcut:
-      mac: cmd,n
-      linux: ctrl,n
-      windows: ctrl,n
+      macos: cmd,n
+      default: ctrl,n
     description: Open a new window
   - shortcut:
-      mac: cmd,shift,n
-      linux: ctrl,shift,n 
-      windows: ctrl,shift,n
+      macos: cmd,shift,n
+      default: ctrl,shift,n 
     description: Open a new window in incognito mode
   - shortcut:
-      mac: cmd,t
-      linux: ctrl,t
-      windows: ctrl,t
+      macos: cmd,t
+      default: ctrl,t
     description: Open a new tab, and jump to it
   - shortcut:
-      mac: cmd,shift,t
-      linux: ctrl,shift, 
-      windows: ctrl,shift,t
+      macos: cmd,shift,t
+      default: ctrl,shift, 
     description: Reopen previously closed tabs in the order they were closed
   - shortcut:
-      mac: cmd,opt,rarrow
-      linux: ctrl,tab / ctrl,pgdn
-      windows: ctrl,tab / ctrl,pgdn
+      macos: cmd,opt,rarrow
+      default: ctrl,tab / ctrl,pgdn
     description: Jump to the next open tab
   - shortcut:
-      mac: cmd,opt,larrow
-      linux: ctrl,shift,tab / ctrl,pgdn
-      windows: ctrl,shift,tab / ctrl,pgup
+      macos: cmd,opt,larrow
+      default: ctrl,shift,tab / ctrl,pgdn
     description: Jump to the previous open tab
   - shortcut:
-      mac: cmd,1..8
-      linux: ctrl,1..8
-      windows: ctrl,1..8
+      macos: cmd,1..8
+      default: ctrl,1..8
     description: Jump to a specific tab
   - shortcut:
-      mac: cmd,9
-      linux: ctrl,9
-      windows: ctrl,9
+      macos: cmd,9
+      default: ctrl,9
     description: Jump to last tab
   - shortcut:
-      mac: NA
-      linux: alt,home
-      windows: alt,home
+      macos: NA
+      default: alt,home
     description: Open your home page in the current tab
   - shortcut:
-      mac: cmd,[ / cmd,larrow
-      linux: alt,larrow
-      windows: alt,larrow
+      macos: cmd,[ / cmd,larrow
+      default: alt,larrow
     description: Open the previous page from browsing history in the current tab
   - shortcut:
-      mac: cmd,[ / cmd,rarrow
-      linux: alt,rarrow
-      windows: alt,rarrow
+      macos: cmd,[ / cmd,rarrow
+      default: alt,rarrow
     description: Open the next page from browsing history in the current tab
   - shortcut:
-      mac: cmd + w
-      linux: ctrl + w
-      windows: ctrl + w
+      macos: cmd + w
+      default: ctrl + w
     description: Close the current tab
   - shortcut:
-      mac: cmd + shift + w
-      linux: ctrl + shift + w
-      windows: ctrl + shift + w
+      macos: cmd + shift + w
+      default: ctrl + shift + w
     description: Close the current window
   - shortcut:
-      mac: cmd + m
-      linux: alt + space > n
-      windows: alt + space > n
+      macos: cmd + m
+      default: alt + space > n
     description: Minimize the current window
   - shortcut:
-      mac: NA
-      linux: alt + space > x
-      windows: alt + space > x
+      macos: NA
+      default: alt + space > x
     description: Maximize the current window
   - shortcut:
-      mac: cmd + w
-      linux: NA
-      windows: NA
+      macos: cmd + w
+      default: NA
     description: Hide Google Chrome
   - shortcut:
-      mac: cmd + q
-      linux: alt + v > x
-      windows: alt + f > x
+      macos: cmd + q
+      default: alt + v > x
     description: Quit Google Chrome
   - shortcut:
-      mac: ctrl + shift + pgup
-      linux: ctrl,shift,pgup
-      windows: ctrl,shift,pgup
+      macos: ctrl + shift + pgup
+      default: ctrl,shift,pgup
     description: Move tabs right
   - shortcut:
-      mac: ctrl,shift,pgdn
-      linux: ctrl,shift,pgdn
-      windows: ctrl,shift,pgdn
+      macos: ctrl,shift,pgdn
+      default: ctrl,shift,pgdn
     description: Move tabs left
