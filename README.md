@@ -18,6 +18,16 @@ It uses YAML to define shortcuts with following structure:
 
 Shortcuts can be defined for specific operating system, e.g. macos, linux, windows. If there is no need to that, just a `default` can be provided.
 
+## Usage
+
+Note: I only tested this under Mac. It should probably work under Linux but not so sure about Windows.
+
+Build locally
+`cargo build`
+
+Install as application on Mac
+`cargo bundle`
+
 
 ## Initialize directory and copy cheatsheets into it.
 
